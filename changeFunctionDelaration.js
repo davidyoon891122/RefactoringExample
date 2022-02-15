@@ -39,8 +39,10 @@ const newEnglanders = someCustomers.filter(c => inNewEngland(c));
 //TOBE
 function inNewEngland(aCustomer) {
     return xxNewInEngland(aCustomer.address.state);
+}
 
-function xxNewInEngland(stateCode) {
+function inNewEngland(stateCode) {
     return ["MA", "CT", "ME", "VT", "NH", "RI"].includes(stateCode);
 }
-}
+const newEnglanders = someCustomers.filter(c=>xxNewInEngland(c.address.state));
+

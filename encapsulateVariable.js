@@ -19,7 +19,6 @@ export function defaultOwner() {return Object.assign({},defaultOwnerData);}
 export function setDefaultOwner(arg) {defaultOwnerData = arg;}
 
 //레코드 캡슐화하기
-
 class Person {
     constructor(data) {
         this._lastName = data.lastName;
