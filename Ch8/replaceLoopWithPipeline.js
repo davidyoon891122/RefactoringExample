@@ -149,3 +149,16 @@ function acquireData(input) {
         ; 
     return result;
 }
+
+// 더 가다듬기 
+// result 변수를 인사인하고, 람드(lamda) 변수 중 일부의 이름을 바꾸고, 코드를 읽기 쉽도록 레이아웃을 표 형태로 정돈한다.
+function acquireData(input) {
+    const lines = input.split("\n"); 
+    return lines 
+        .slice(1)
+        .filter (line => line.trim() != "")
+        .map    (line => line.split(","))
+        .filter (fields => fields[1].trim() === "India")
+        .map    (fileds => ({city: fileds[0].trim(), phone: fileds[2].trim()}))
+        ; 
+}
