@@ -69,7 +69,7 @@ class Manager extends Employee {
 
 function createEmployee(name, type) {
     switch (type) {
-        case "engineer": return new Engineer(anme, type);
+        case "engineer": return new Engineer(name, type);
         case "salesperson": return new Salesperson(name, type);
         case "manager": return new Manager(name, type);
     }
@@ -97,18 +97,16 @@ class Employee {
     toString() {
         return  `${this._name} (${this.type})`
     }
-
-    function createEmployee(name, type) {
-        switch (type) {
-            case "engineer": return new Engineer(anme, type);
-            case "salesperson": return new Salesperson(name, type);
-            case "manager": return new Manager(name, type);
-            default: throw new Error(`${type}라는 직원 유형은 없습니다.`)
-        }
-    }
 }
 
-
+function createEmployee(name, type) {
+    switch (type) {
+        case "engineer": return new Engineer(name, type);
+        case "salesperson": return new Salesperson(name, type);
+        case "manager": return new Manager(name, type);
+        default: throw new Error(`${type}라는 직원 유형은 없습니다.`)
+    }
+}
 
 // Step 8 생성자에서 건네는 타입 코드 인수는 쓰이지 않으니 제거한다
 class Employee {
@@ -123,9 +121,12 @@ class Employee {
 
 function createEmployee(name, type) {
     switch (type) {
-        case "engineer": return new Engineer(anme, type);
-        case "salesperson": return new Salesperson(name, type);
-        case "manager": return new Manager(name, type);
+        case "engineer": return new Engineer(name);
+        case "salesperson": return new Salesperson(name);
+        case "manager": return new Manager(name);
         default: throw new Error(`${type}라는 직원 유형은 없습니다.`)
     }
 }
+
+// 서브클래스들에 타입 코드 게터(get type()) 여전히 남아 있다. 보통은 제거하고 싶겠지만, 이용하는 코드가 어딘가에 남아 있을 수 있다.
+// 조건부 로직을 다형성으로 바꾸기와 메서드 내리기로 문제를 해결하자. 하나씩 해결하다 보면 타입 게터를 호출하는 코드가 모두 사라질 것이다.
