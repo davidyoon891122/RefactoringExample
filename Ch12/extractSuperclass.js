@@ -305,3 +305,4 @@ class Department extends Party {
         return this.staff.length
     }
 }
+
